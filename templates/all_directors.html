@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> See all the directors of movies users have watched! </h1>
+<ul>
+{% for d in directors %}
+Director Name: {{ d[0] }} &emsp; &emsp;&emsp; Movies: {{ d[1] }}
+<br>
+
+
+
+{% endfor %}
+
+
+
+{% endblock %}

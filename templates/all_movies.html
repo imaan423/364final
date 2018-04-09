@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block explorer %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+
+<h2>All Movies</h2>
+<UL> 
+{% for r in allmovies %}
+
+   <li> <a href= "{{ '/movie/%s'%r.title }}">{{r.title}}</a> was released in {{ r.year }} and received a rating of {{ r.rating }}. 
+    
+
+
+<br> 
+<UL>
+{% for s in r.director %}
+    
+    <li> Director: {{s.title}} </li> 
+
+</br>
+
+
+{% endfor %}
+</UL>
+
+    <form method="POST" action="/delete/{{ r.title }}">
+		{{ form.hidden_tag() }}
+		{{ form.submit() }}
+	</form>
+
+
+	<form method="POST" action="/update/{{ r.title }}">
+		{{ form2.hidden_tag() }}
+		{{ form2.submit() }}
+	</form>
+	</li> 
+
+
+
+{% endfor %} 
+ </UL>
+
+{% if not allmovies %}
+    There are no movies to show. 
+{% endif %}
+
+
+
+
+{% endblock %}
+
+
+
+

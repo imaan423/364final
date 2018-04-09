@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3> Enter Movies you have seen! </h3>
+
+<form action="{{ url_for('home') }}" method="POST">
+	{{ form.csrf_token }}
+	{{ form.hidden_tag() }}
+    {{ form.movietitle.label() }}{{ form.movietitle() }}<br>
+    {{ form.director.label }} {{ form.director() }}<br>
+    {{ form.rating.label }} {{ form.rating() }}<br>
+    {{ form.year.label }} {{ form.year() }}<br>
+    {{ form.submit() }}
+</form>
+
+
+<h3> Who's your favorite movie celebrity? </h3>
+
+<form action="{{ url_for('home') }}" method="POST">
+    {{ form2.csrf_token }}
+    {{ form2.hidden_tag() }}
+    {{ form2.name.label() }}{{ form2.name() }}<br>
+    {{ form2.submit() }}
+</form>
+
+
+<body>
+	<a href = "/all_movies.html">
+	<a href = "/all_directors.html">
+</body>
+
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+

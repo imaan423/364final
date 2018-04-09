@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block nav %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<ul>
+    <li>
+        Title: {{ item.title }} 
+        Rating: {{ item.rating }} 
+        Year: {{ item.year }} 
+        <form method="POST" action="/update/{{ item.id }}">
+  			{{ form.hidden_tag() }}
+  			{{ form.submit() }}
+  		</form>
+    </li>
+</ul>
+
+<div>
+{% for message in get_flashed_messages() %}
+<strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+{% block explorer %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.see.label }} {{ form.see() }} <br>
+	{{ form.submit.label }}{{ form.submit() }}
+</form>
+
+
+<br>
+<br>
+
+Search for a movie and receive an overview and rating from TheMovieDB!
+
+{{title}} <br>
+<br>
+{{overview}}
+<br>
+
+<br>
+<a id="r"></a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+	var title = "{{title}}"
+	var settings = {
+
+	  "async": true,
+	  "crossDomain": true,
+	  "url": "https://api.themoviedb.org/3/search/movie?page=1&query="+ title +"&api_key=01f21469bee1f9c1dae9b24273441f0c",
+	  "method": "GET",
+	  "headers": {},
+	  "data": "{}"
+	}
+
+	$.ajax(settings).done(function (response) {
+	  var r = response["results"][0]["vote_average"]
+	  document.getElementById("r").innerHTML=r
+});
+</script>
+
+
+{% if not title %}
+    There are no movies with that name. Try Again! 
+{% endif %}
+
+
+{% endblock %}
+
+
+
+

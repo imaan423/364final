@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+<h1>Sign up for a MovieMood account</h1>
+
+{% block navigation %}
+ {{ super() }}
+{% endblock %}
+
+{% block content %}
+<form method="POST">
+	<br>
+	<br>
+	<br>
+	{{ form.hidden_tag() }} <br>
+	{{ form.email.label }} {{ form.email() }} <br>
+	{{ form.username.label }} {{ form.username() }} <br>
+    {{ form.password.label }} {{ form.password() }} <br>
+    {{ form.password2.label }} {{ form.password2() }} <br>
+	{{ form.submit.label }}{{ form.submit() }}
+</form>
+{% endblock %}

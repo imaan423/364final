@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block explorer %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<h2>See favorite movie celebrities names!</h2>
+
+{% for n in names %}
+    <p>{{ n }}</p>
+{% endfor %}
+
+{% if not names %}
+    There are no celebrity names to show. 
+{% endif %}
+
+
+{% endblock %}

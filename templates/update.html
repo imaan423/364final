@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+ <br>
+<div>
+	{% for message in get_flashed_messages() %} 
+	{{ message }}
+	{% endfor %}
+</div>
+
+
+<br>
+<br>
+<form method="POST" action="/update/{{ item }}">
+	{{ form.hidden_tag() }}
+	{{form.newtitle.label }} {{ form.newtitle() }} <br>
+	{{form.newrating.label }} {{ form.newrating() }} <br>
+	{{form.newyear.label }} {{ form.newyear() }} <br>
+	{{ form.submit() }}
+</form>
+
+
+{% endblock %}

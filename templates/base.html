@@ -1,0 +1,47 @@
+{% block explorer %}
+
+{% if current_user.is_authenticated %}
+    <a href="{{ url_for('logout') }}">Sign Out {{current_user.username}}</a>
+{% else %}
+    <a href="{{ url_for('login') }}">Sign In</a>
+{% endif %}
+<br>
+<br>
+
+
+<table style="width:100%">
+	<tr>
+		<th><a href="{{ url_for('home')}}">Home</a></th>
+		<th><a href = "{{ url_for('see_favorite') }}">See Favorite Celebrities</a></th>
+		<th><a href = "{{ url_for('all_movies') }}">See all Movies</a></th>
+		<th><a href = "{{ url_for('all_directors') }}">See all Directors</a></th>
+		<th><a href = "{{ url_for('search_movie') }}">Search for a Movie</a></th>
+	</tr>
+</table>
+
+{% endblock %}
+
+{% block content %}
+<h1> Welcome to Movie Mood! </h1>
+
+
+<body>
+	<a href = "/all_movies.html">
+	<a href = "/all_directors.html">
+</body>
+
+
+<div>
+{% for message in get_flashed_messages() %}
+{{ message }}
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
