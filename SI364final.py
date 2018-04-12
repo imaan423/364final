@@ -22,7 +22,7 @@ app = Flask(__name__)
 app.debug = True
 app.use_reloader = True
 app.config['SECRET_KEY'] = 'hardtoguessstring'
-app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://localhost/SI364projectplanimunir"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL') or "postgresql://localhost/SI364finalimunir" 
 app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['HEROKU_ON'] = os.environ.get('HEROKU')
@@ -56,7 +56,6 @@ class User(UserMixin, db.Model):
 		username = db.Column(db.String(255), unique=True, index=True)
 		email = db.Column(db.String(64), unique=True, index=True)
 		password_hash = db.Column(db.String(128))
-		#movie = db.relationship('Search',backref='User')
 
 		@property
 		def password(self):
@@ -124,9 +123,16 @@ class RegistrationForm(FlaskForm):
 		password2 = PasswordField("Confirm Password:",validators=[Required()])
 		submit = SubmitField('Register User')
 
+
 		def validate_email(self,field):
 			if User.query.filter_by(email=field.data).first():
-				raise ValidationError('It looks like this email address has already been registered.')
+				raise ValidationError('Email address has already been registered.')
+
+
+		def validate_username(self,field):
+			if User.query.filter_by(username=field.data).first():
+				raise ValidationError('Username already taken')
+
 
 class LoginForm(FlaskForm):
 		email = StringField('Email', validators=[Required(), Length(1,64), Email()])
@@ -257,10 +263,12 @@ def register():
 				db.session.commit()
 				flash('You can now log in!')
 				return redirect(url_for('login'))
+		flash(form.errors)
 		return render_template('register.html',form=form)
 
 
 @app.route('/', methods=['GET', 'POST'])
+@login_required
 def home():
 		form = MovieForm() 
 		form2 = FavoriteActorForm() 
@@ -355,7 +363,7 @@ def see_favorite():
 		else:
 			flash("You're not logged in! Try again.")
 			return redirect(url_for('index'))
-#should first make sure the user is logged in to access the page. if user is logged in, then it will query all favorite celebrities names and match the names with the user ID to only display the names entered by the specific user. it will then render favorite.html where it is a page with all the saved celebrity names by that given user. if not, should just show form again.
+	#should first make sure the user is logged in to access the page. if user is logged in, then it will query all favorite celebrities names and match the names with the user ID to only display the names entered by the specific user. it will then render favorite.html where it is a page with all the saved celebrity names by that given user. if not, should just show form again.
 
 @app.route('/search_movie', methods=["GET","POST"])
 @login_required
@@ -367,7 +375,6 @@ def search_movie():
 				return render_template('search_movie.html',title=title, overview=overview, form=form)
 		return render_template('search_movie.html',form=form, title=" ")
 	#should render a form where a user can input a movie and then from TheMovieDB API get movie title and movie overview about the particular movie
-
 
 
 

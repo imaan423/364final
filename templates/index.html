@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h3> Enter Movies you have seen! </h3>
+<h2> Enter Movies you have seen! </h2>
 
 <form action="{{ url_for('home') }}" method="POST">
 	{{ form.csrf_token }}
@@ -15,7 +15,8 @@
 </form>
 
 
-<h3> Who's your favorite movie celebrity? </h3>
+<h2> Who's your favorite movie celebrity? </h2>
+
 
 <form action="{{ url_for('home') }}" method="POST">
     {{ form2.csrf_token }}
