@@ -24,17 +24,29 @@ No additional modules to install
 ** Routes **
 
 /404 -> 404.html
+
 /500 -> 500.html
+
 /login -> login.html
+
 /logout -> logs user out of account and redirects to index page
+
 /register -> register.html
+
 / -> index.html
+
 /all_movies -> all_movies.html
+
 /delete/<movielst> -> deletes a Movie and redirects to index page
+
 /movie/<info> -> single_movie.html
+
 /update/<item> -> update.html
+
 /all_directors -> all_directors.html
+
 /see_favorite -> favorite.html
+
 /search_movie -> search_movie.html
 
 
