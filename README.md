@@ -3,9 +3,11 @@
 I am creating an application called Movie Mood. Movie Mood allows users to register and sign in, and enter movie titles that they can then save to their account. Any user can see all the possible movie titles and director names they (and other users) have saved. Movies and Directors will have a many-to-many relationships - since there can be multiple directors for a movie, and directors can direct multiple movies. Movie Mood will also allow logged-in users to enter and save their favorite celebrity movie stars. Users can see all the favorite celebrity names they have saved but can't see other users' favorite celebrity names. Also logged-in users are able to search for a movie and receive the movie title along with the movie overview - by using data from TheMovieDB's API to gather data about the searched movie. I also used AJAX to send a request to TheMovieDB to get a movie's rating. I then displayed the rating when a user searched for a movie. 
 
 
+
 ** What a user can do **
 
 A user has the option of signing up for an account or not. If the user chooses not to sign up for an account, they can ONLY see all the movies and directors that other users have added. However, that is all they can do. If a user chooses to make an account, they can do all of the above - plus more. Logged in users can enter and save movies they have seen (so enter a movie title, movie rating, directors of the movie (this can be a list), and the year the movie was filmed in). The logged-in users can also enter/save their favorite celebrity names in a form. They can only see the celebrity names they have entered (users don't have access to seeing other users' favorite celebrity names). Logged in users can also search for a movie - which will use TheMovieDB API - to view the searched movie's overview and rating
+
 
 
 
@@ -31,9 +33,11 @@ A user has the option of signing up for an account or not. If the user chooses n
 
 
 
+
 ** Heroku Link **
 
 https://moviemood-imunir.herokuapp.com/
+
 
 
 
@@ -43,33 +47,35 @@ https://moviemood-imunir.herokuapp.com/
 
 
 
+
 ** Routes **
 
-/404 -> 404.html
+- /404 -> 404.html
 
-/500 -> 500.html
+- /500 -> 500.html
 
-/login -> login.html
+- /login -> login.html
 
-/logout -> logs user out of account and redirects to index page
+- /logout -> logs user out of account and redirects to index page
 
-/register -> register.html
+- /register -> register.html
 
-/ -> index.html
+- / -> index.html
 
-/all_movies -> all_movies.html
+- /all_movies -> all_movies.html
 
-/delete/<movielst> -> deletes a Movie and redirects to index page
+- /delete/<movielst> -> deletes a Movie and redirects to index page
 
-/movie/<info> -> single_movie.html
+- /movie/<info> -> single_movie.html
 
-/update/<item> -> update.html
+- /update/<item> -> update.html
 
-/all_directors -> all_directors.html
+- /all_directors -> all_directors.html
 
-/see_favorite -> favorite.html
+- /see_favorite -> favorite.html
 
-/search_movie -> search_movie.html
+- /search_movie -> search_movie.html
+
 
 
 
