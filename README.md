@@ -5,7 +5,29 @@ I am creating an application called Movie Mood. Movie Mood allows users to regis
 
 ** What a user can do **
 
-A user has the option of signing up for an account or not. If the user chooses not to sign up for an account, they can see all the movies and directors that other users have added. However, that is all they can do. If a user chooses to make an account, they can do all of the above - plus more. Logged in users can enter and save movies they have seen (movie title, movie rating, directors of the movie, and the year the movie was filmed in). The logged-in users can also enter/save their favorite celebrity names. They can only see the celebrity names they have entered (users don't have access to seeing other users' favorite celebrity names). Logged in users can also search for a movie - which will use TheMovieDB API - to view the searched movie's overview and rating.
+A user has the option of signing up for an account or not. If the user chooses not to sign up for an account, they can ONLY see all the movies and directors that other users have added. However, that is all they can do. If a user chooses to make an account, they can do all of the above - plus more. Logged in users can enter and save movies they have seen (so enter a movie title, movie rating, directors of the movie (this can be a list), and the year the movie was filmed in). The logged-in users can also enter/save their favorite celebrity names in a form. They can only see the celebrity names they have entered (users don't have access to seeing other users' favorite celebrity names). Logged in users can also search for a movie - which will use TheMovieDB API - to view the searched movie's overview and rating
+
+
+
+** How to run the application locally **
+
+- cd to the directory in which the application files live
+
+- in terminal, create a database called SI364finalimunir (createdb SI364finalimunir)
+
+- Then run python SI364final.py runserver
+
+- Once the app is running, the user will see the home page
+
+- On the home page, a user is promoted to log in or register
+
+- Either log in or register (if you don't have an existing account) 
+
+- Once logged into the site, the user is prompted to fill various of forms related to their movie watching 
+
+- For example, a user should type a movie's title, director, rating, year filmed in
+
+- Then the user will be redirected to a page showing all movies entered! 
 
 
 
@@ -17,7 +39,7 @@ https://moviemood-imunir.herokuapp.com/
 
 ** Modules **
 
-No additional modules to install
+- flask library and all flask-related modules we previously used in this class
 
 
 
